@@ -23,4 +23,10 @@ import SiteNavegation from "./components/SiteNavegation.vue";
 .page-leave-to{
     opacity: 0;
 }
+    ::-webkit-scrollbar{
+        background: #00668A;
+    }
+    ::-webkit-scrollbar-thumb{
+        background: #004E71;
+    }
 </style>

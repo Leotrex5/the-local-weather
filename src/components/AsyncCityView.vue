@@ -45,9 +45,10 @@
                     >
                         <p class="whitespace-nowrap text-md"
                         >{{new Date(hour.currentTime)
-                            .toLocaleDateString(
+                            .toLocaleTimeString(
                                 "pt-br",{
-                                    hour:"numeric",
+                                    hour:"2-digit",
+                                    minute: "2-digit"
                             }
                             )
                         }}</p>
@@ -64,7 +65,7 @@
 
         <hr class="border-white border-opacity-10 border w-full">
         <!-- weekly weather -->
-        <div class="max-w-screen-md w-full py-12">
+        <!-- <div class="max-w-screen-md w-full py-12">
             <div class="mx-8 text-white">
                 <h2 class="mb-4">7 Day Forecast</h2>
                 <div class="flex items-center"
@@ -79,7 +80,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="flex items=center gap-2 py-12 text-white cursor-pointer duration-150 hover:text-red-500" @click="removeCity">
             <i class="fa-solid fa-trash"></i>
@@ -117,7 +118,7 @@ const weatherData = await getWeatherData();
 
 const getWeatherHourly = async ()=>{
     try{
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${route.query.lat}&lon=${route.query.lon}&appid=${APIkey}&lang=pt_br&units=metric`)
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${route.query.lat}&lon=${route.query.lon}&appid=${APIkey}&lang=pt_br&units=metric&cnt=8`)
 
         // cal hourly weather offset
         const localOffset = new Date().getTimezoneOffset() * 60000
